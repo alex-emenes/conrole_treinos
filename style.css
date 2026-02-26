@@ -1,0 +1,216 @@
+/* Estilos básicos para o aplicativo de controle de treino. */
+
+/* Reset simples */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f4f4f6;
+  color: #333;
+  line-height: 1.4;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cartões com sombra */
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+/* Formulário */
+#workout-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-group {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-actions button[type="reset"] {
+  background-color: #6c757d;
+}
+
+.form-actions button:hover {
+  background-color: #0056b3;
+}
+
+.form-actions button[type="reset"]:hover {
+  background-color: #5a6268;
+}
+
+/* Tabela */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #007bff;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.table-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.table-actions button:hover {
+  background-color: #218838;
+}
+
+#clear-btn {
+  background-color: #dc3545;
+}
+
+#clear-btn:hover {
+  background-color: #c82333;
+}
+
+/* Resumo */
+#summary {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+/* Tabelas de resumo */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  font-size: 0.8rem;
+}
+
+.summary-table th,
+.summary-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+}
+
+.summary-table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+.summary-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+  .form-group {
+    flex-basis: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-actions {
+    flex-direction: column;
+  }
+}

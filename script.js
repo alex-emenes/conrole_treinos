@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Treino</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Controle de Treino</h1>
+      <p>
+        Use este aplicativo offline para registrar seus treinos, acompanhar a
+        progressão de carga e ver um resumo da evolução. Os dados são
+        armazenados localmente no seu dispositivo (localStorage), de modo
+        que você pode abrir o arquivo no Google Drive ou no seu celular sem
+        perder as informações.
+      </p>
+    </header>
+
+    <main>
+      <!-- Formulário de entrada de treino -->
+      <section class="card">
+        <h2>Adicionar novo treino</h2>
+        <form id="workout-form">
+          <div class="form-group">
+            <label for="date">Data</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="start">Início</label>
+            <input type="time" id="start" required />
+          </div>
+          <div class="form-group">
+            <label for="end">Fim</label>
+            <input type="time" id="end" required />
+          </div>
+          <div class="form-group">
+            <label for="exercise">Exercício</label>
+            <input
+              type="text"
+              id="exercise"
+              list="exercise-list"
+              placeholder="Ex.: Supino reto"
+              required
+            />
+            <!-- Lista de sugestões de exercícios -->
+            <datalist id="exercise-list">
+              <option value="Agachamento"></option>
+              <option value="Supino reto"></option>
+              <option value="Levantamento terra"></option>
+              <option value="Remada curvada"></option>
+              <option value="Desenvolvimento militar"></option>
+              <option value="Rosca bíceps"></option>
+              <option value="Puxada alta"></option>
+              <option value="Tríceps testa"></option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label for="sets">Séries</label>
+            <input type="number" id="sets" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="reps">Repetições</label>
+            <input type="number" id="reps" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="weight">Carga (kg)</label>
+            <input type="number" id="weight" min="0" step="0.5" required />
+          </div>
+          <div class="form-group">
+            <label for="rest">Descanso (s)</label>
+            <input type="number" id="rest" min="0" step="5" />
+          </div>
+          <div class="form-group">
+            <label for="rpe">RPE (1–10)</label>
+            <input type="number" id="rpe" min="1" max="10" />
+          </div>
+          <div class="form-group">
+            <label for="notes">Observações</label>
+            <textarea id="notes" rows="2" placeholder="Observações, sensações, etc."></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit">Adicionar</button>
+            <button type="reset">Limpar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Tabela de treinos salvos -->
+      <section class="card">
+        <h2>Entradas salvas</h2>
+        <div class="table-container">
+          <table id="entries-table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Exercício</th>
+                <th>Séries</th>
+                <th>Reps</th>
+                <th>Carga (kg)</th>
+                <th>Volume</th>
+                <th>Descanso (s)</th>
+                <th>Duração</th>
+                <th>RPE</th>
+                <th>Observações</th>
+              </tr>
+            </thead>
+            <tbody id="entries-body"></tbody>
+          </table>
+        </div>
+        <div class="table-actions">
+          <button id="download-btn">Baixar CSV</button>
+          <button id="clear-btn">Limpar dados</button>
+        </div>
+      </section>
+
+      <!-- Resumo de progressão e volume -->
+      <section class="card">
+        <h2>Resumo de Volume e Progressão</h2>
+        <div id="summary"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
