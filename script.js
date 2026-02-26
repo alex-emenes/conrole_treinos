@@ -20,40 +20,46 @@ const STORAGE_KEY = 'controleTreinoEntries';
  * Carga (weight) é inicializada como 0 para que o usuário preencha posteriormente.
  */
 const defaultEntries = [
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Supino reto barra","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa 1s no peito"},
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Supino inclinado halter","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle descida"},
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Crucifixo cabo","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Última drop"},
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Paralelas","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Peso se possível"},
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Tríceps corda","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Rest-pause"},
-  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Tríceps overhead","sets":2,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Alongar"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Barra fixa","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Peso se possível"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Remada curvada","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Tronco firme"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Puxada alta","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Escápula"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Remada baixa","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Contração"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Rosca barra","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
-  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Rosca inclinada","sets":2,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Myo-reps"},
-  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Agachamento","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Profundo"},
-  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Leg press","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Sem travar"},
-  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Hack / Front","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Tensão"},
-  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Extensora","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Drop"},
-  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Panturrilha pé","sets":4,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa topo"},
-  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Desenvolvimento","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
-  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Elevação lateral","sets":4,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle"},
-  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Posterior máquina","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Contração"},
-  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Remada alta","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Deltóide"},
-  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Face pull","sets":2,"reps":20,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Saúde"},
-  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Terra romeno","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Alongar"},
-  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Mesa flexora","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle"},
-  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Hip thrust","sets":4,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa topo"},
-  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Flexora sentado","sets":2,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pump"},
-  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Panturrilha sentado","sets":4,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Lento"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Supino inclinado barra","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Chest press","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Estável"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Fly low-to-high","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Clavicular"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Peck deck","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Drop"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Flexão carga","sets":2,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pump"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Crunch cabo","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Core"},
-  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Prancha","sets":3,"reps":1,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"30–45s"}
+  // Treino A — Peito + Tríceps (segunda)
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Supino reto barra', sets: 4, reps: 6, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pausa 1s no peito' },
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Supino inclinado halter', sets: 3, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Controle descida' },
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Crucifixo cabo', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Última drop' },
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Paralelas', sets: 3, reps: 10, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Peso se possível' },
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Tríceps corda', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Rest-pause' },
+  { training: 'A', date: '2026-03-02', start: '18:00', end: '19:00', exercise: 'Tríceps overhead', sets: 2, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Alongar' },
+  // Treino B — Costas + Bíceps (terça)
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Barra fixa', sets: 4, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Peso se possível' },
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Remada curvada', sets: 4, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Tronco firme' },
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Puxada alta', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Escápula' },
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Remada baixa', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Contração' },
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Rosca barra', sets: 3, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pesado' },
+  { training: 'B', date: '2026-03-03', start: '18:00', end: '19:00', exercise: 'Rosca inclinada', sets: 2, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Myo-reps' },
+  // Treino C — Quadríceps (quarta)
+  { training: 'C', date: '2026-03-04', start: '18:00', end: '19:00', exercise: 'Agachamento', sets: 4, reps: 6, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Profundo' },
+  { training: 'C', date: '2026-03-04', start: '18:00', end: '19:00', exercise: 'Leg press', sets: 3, reps: 10, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Sem travar' },
+  { training: 'C', date: '2026-03-04', start: '18:00', end: '19:00', exercise: 'Hack / Front', sets: 3, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Tensão' },
+  { training: 'C', date: '2026-03-04', start: '18:00', end: '19:00', exercise: 'Extensora', sets: 3, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Drop' },
+  { training: 'C', date: '2026-03-04', start: '18:00', end: '19:00', exercise: 'Panturrilha pé', sets: 4, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pausa topo' },
+  // Treino D — Ombros (quinta)
+  { training: 'D', date: '2026-03-05', start: '18:00', end: '19:00', exercise: 'Desenvolvimento', sets: 4, reps: 6, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pesado' },
+  { training: 'D', date: '2026-03-05', start: '18:00', end: '19:00', exercise: 'Elevação lateral', sets: 4, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Controle' },
+  { training: 'D', date: '2026-03-05', start: '18:00', end: '19:00', exercise: 'Posterior máquina', sets: 3, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Contração' },
+  { training: 'D', date: '2026-03-05', start: '18:00', end: '19:00', exercise: 'Remada alta', sets: 3, reps: 10, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Deltóide' },
+  { training: 'D', date: '2026-03-05', start: '18:00', end: '19:00', exercise: 'Face pull', sets: 2, reps: 20, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Saúde' },
+  // Treino E — Posterior + Glúteo (sexta)
+  { training: 'E', date: '2026-03-06', start: '18:00', end: '19:00', exercise: 'Terra romeno', sets: 4, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Alongar' },
+  { training: 'E', date: '2026-03-06', start: '18:00', end: '19:00', exercise: 'Mesa flexora', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Controle' },
+  { training: 'E', date: '2026-03-06', start: '18:00', end: '19:00', exercise: 'Hip thrust', sets: 4, reps: 10, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pausa topo' },
+  { training: 'E', date: '2026-03-06', start: '18:00', end: '19:00', exercise: 'Flexora sentado', sets: 2, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pump' },
+  { training: 'E', date: '2026-03-06', start: '18:00', end: '19:00', exercise: 'Panturrilha sentado', sets: 4, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Lento' },
+  // Treino F — Peito Prioritário + Core (sábado)
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Supino inclinado barra', sets: 4, reps: 8, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pesado' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Chest press', sets: 3, reps: 10, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Estável' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Fly low-to-high', sets: 3, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Clavicular' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Peck deck', sets: 3, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Drop' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Flexão carga', sets: 2, reps: 12, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Pump' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Crunch cabo', sets: 3, reps: 15, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: 'Core' },
+  { training: 'F', date: '2026-03-07', start: '18:00', end: '19:00', exercise: 'Prancha', sets: 3, reps: 1, weight: 0, volume: 0, rest: '', duration: '01:00', rpe: '', notes: '30–45s' }
 ];
 
 // Carrega as entradas do localStorage
@@ -115,6 +121,7 @@ function addEntry(entry) {
 // Converte uma entrada em array de valores para CSV
 function entryToCsvRow(entry) {
   return [
+    entry.training || '',
     entry.date,
     entry.start,
     entry.end,
@@ -133,6 +140,7 @@ function entryToCsvRow(entry) {
 // Gera CSV do array de entradas
 function generateCsv(entries) {
   const header = [
+    'Treino',
     'Data',
     'Inicio',
     'Fim',
@@ -155,9 +163,16 @@ function generateCsv(entries) {
 function renderEntriesTable(entries) {
   const tbody = document.getElementById('entries-body');
   tbody.innerHTML = '';
-  entries.forEach((entry) => {
+  // Aplica filtro de treino, se selecionado
+  const filterSelect = document.getElementById('filter-training');
+  const filterValue = filterSelect && filterSelect.value ? filterSelect.value : '';
+  const filtered = filterValue
+    ? entries.filter((e) => e.training === filterValue)
+    : entries;
+  filtered.forEach((entry) => {
     const tr = document.createElement('tr');
     const columns = [
+      entry.training || '',
       entry.date,
       entry.start,
       entry.end,
@@ -293,6 +308,7 @@ function init() {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     const date = document.getElementById('date').value;
+    const training = document.getElementById('training').value;
     const start = document.getElementById('start').value;
     const end = document.getElementById('end').value;
     const exercise = document.getElementById('exercise').value.trim();
@@ -311,6 +327,7 @@ function init() {
     const volume = calculateVolume(sets, reps, weight);
     const duration = calculateDuration(start, end);
     const entry = {
+      training,
       date,
       start,
       end,
@@ -361,6 +378,80 @@ function init() {
       renderSummary([]);
     }
   });
+
+  // Filtro de treino
+  const filterSelect = document.getElementById('filter-training');
+  if (filterSelect) {
+    filterSelect.addEventListener('change', function () {
+      const entries = loadEntries();
+      renderEntriesTable(entries);
+    });
+  }
+
+  // Cronômetro do treino
+  const timerDisplay = document.getElementById('timer-display');
+  const startTimerBtn = document.getElementById('start-timer-btn');
+  const stopTimerBtn = document.getElementById('stop-timer-btn');
+  let timerInterval = null;
+  let timerStartTime = null;
+
+  function formatElapsed(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return (
+      String(hours).padStart(2, '0') +
+      ':' +
+      String(minutes).padStart(2, '0') +
+      ':' +
+      String(seconds).padStart(2, '0')
+    );
+  }
+
+  if (startTimerBtn && stopTimerBtn && timerDisplay) {
+    startTimerBtn.addEventListener('click', function () {
+      // Se já estiver rodando, ignore
+      if (timerInterval) return;
+      timerStartTime = new Date();
+      // Preenche data e horário de início nos campos do formulário
+      const now = new Date();
+      const dateInput = document.getElementById('date');
+      const startInput = document.getElementById('start');
+      if (dateInput) {
+        const dateStr = now.toISOString().slice(0, 10);
+        dateInput.value = dateStr;
+      }
+      if (startInput) {
+        const timeStr = now.toTimeString().slice(0, 5);
+        startInput.value = timeStr;
+      }
+      timerInterval = setInterval(function () {
+        const current = new Date();
+        const elapsed = current - timerStartTime;
+        timerDisplay.textContent = formatElapsed(elapsed);
+      }, 1000);
+      startTimerBtn.disabled = true;
+      stopTimerBtn.disabled = false;
+    });
+    stopTimerBtn.addEventListener('click', function () {
+      if (!timerInterval) return;
+      clearInterval(timerInterval);
+      timerInterval = null;
+      // Preenche horário de fim no formulário
+      const now = new Date();
+      const endInput = document.getElementById('end');
+      if (endInput) {
+        const timeStr = now.toTimeString().slice(0, 5);
+        endInput.value = timeStr;
+      }
+      // Também atualiza a duração na visualização do cronômetro
+      const elapsed = now - timerStartTime;
+      timerDisplay.textContent = formatElapsed(elapsed);
+      startTimerBtn.disabled = false;
+      stopTimerBtn.disabled = true;
+    });
+  }
 }
 
 // Executa a função de inicialização quando o DOM estiver pronto

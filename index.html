@@ -19,6 +19,16 @@
     </header>
 
     <main>
+      <!-- Cronômetro do treino -->
+      <section class="card">
+        <h2>Cronômetro</h2>
+        <div id="timer-display" style="font-size: 1.2rem; margin-bottom: 8px;">00:00:00</div>
+        <div class="form-actions">
+          <button id="start-timer-btn" type="button">Iniciar</button>
+          <button id="stop-timer-btn" type="button" disabled>Parar</button>
+        </div>
+      </section>
+
       <!-- Formulário de entrada de treino -->
       <section class="card">
         <h2>Adicionar novo treino</h2>
@@ -26,6 +36,17 @@
           <div class="form-group">
             <label for="date">Data</label>
             <input type="date" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="training">Treino</label>
+            <select id="training" required>
+              <option value="A">A (Peito + Tríceps)</option>
+              <option value="B">B (Costas + Bíceps)</option>
+              <option value="C">C (Quadríceps)</option>
+              <option value="D">D (Ombros)</option>
+              <option value="E">E (Posterior + Glúteo)</option>
+              <option value="F">F (Peito Prioritário + Core)</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="start">Início</label>
@@ -90,10 +111,24 @@
       <!-- Tabela de treinos salvos -->
       <section class="card">
         <h2>Entradas salvas</h2>
+        <!-- Filtro de treino -->
+        <div style="margin-bottom: 8px;">
+          <label for="filter-training">Filtrar por treino:</label>
+          <select id="filter-training">
+            <option value="">Todos</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+          </select>
+        </div>
         <div class="table-container">
           <table id="entries-table">
             <thead>
               <tr>
+                <th>Treino</th>
                 <th>Data</th>
                 <th>Início</th>
                 <th>Fim</th>
