@@ -13,6 +13,49 @@
 // Chave usada no localStorage para armazenar os registros
 const STORAGE_KEY = 'controleTreinoEntries';
 
+/*
+ * Conjunto padrão de entradas com base no plano de treino ABCDEF fornecido pelo usuário.
+ * Essas entradas são carregadas automaticamente se não houver registros salvos.
+ * Datas assumidas a partir de 2 de março de 2026 (segunda‑feira) em ordem A–F.
+ * Carga (weight) é inicializada como 0 para que o usuário preencha posteriormente.
+ */
+const defaultEntries = [
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Supino reto barra","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa 1s no peito"},
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Supino inclinado halter","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle descida"},
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Crucifixo cabo","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Última drop"},
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Paralelas","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Peso se possível"},
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Tríceps corda","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Rest-pause"},
+  {"date":"2026-03-02","start":"18:00","end":"19:00","exercise":"Tríceps overhead","sets":2,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Alongar"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Barra fixa","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Peso se possível"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Remada curvada","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Tronco firme"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Puxada alta","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Escápula"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Remada baixa","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Contração"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Rosca barra","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
+  {"date":"2026-03-03","start":"18:00","end":"19:00","exercise":"Rosca inclinada","sets":2,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Myo-reps"},
+  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Agachamento","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Profundo"},
+  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Leg press","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Sem travar"},
+  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Hack / Front","sets":3,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Tensão"},
+  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Extensora","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Drop"},
+  {"date":"2026-03-04","start":"18:00","end":"19:00","exercise":"Panturrilha pé","sets":4,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa topo"},
+  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Desenvolvimento","sets":4,"reps":6,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
+  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Elevação lateral","sets":4,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle"},
+  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Posterior máquina","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Contração"},
+  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Remada alta","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Deltóide"},
+  {"date":"2026-03-05","start":"18:00","end":"19:00","exercise":"Face pull","sets":2,"reps":20,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Saúde"},
+  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Terra romeno","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Alongar"},
+  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Mesa flexora","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Controle"},
+  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Hip thrust","sets":4,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pausa topo"},
+  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Flexora sentado","sets":2,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pump"},
+  {"date":"2026-03-06","start":"18:00","end":"19:00","exercise":"Panturrilha sentado","sets":4,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Lento"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Supino inclinado barra","sets":4,"reps":8,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pesado"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Chest press","sets":3,"reps":10,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Estável"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Fly low-to-high","sets":3,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Clavicular"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Peck deck","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Drop"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Flexão carga","sets":2,"reps":12,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Pump"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Crunch cabo","sets":3,"reps":15,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"Core"},
+  {"date":"2026-03-07","start":"18:00","end":"19:00","exercise":"Prancha","sets":3,"reps":1,"weight":0,"volume":0,"rest":"","duration":"01:00","rpe":"","notes":"30–45s"}
+];
+
 // Carrega as entradas do localStorage
 function loadEntries() {
   const data = localStorage.getItem(STORAGE_KEY);
@@ -231,7 +274,17 @@ function renderSummary(entries) {
 // Inicialização do aplicativo
 function init() {
   // Carrega entradas existentes
-  const entries = loadEntries();
+  let entries = loadEntries();
+  // Se não houver entradas, popula com o plano padrão
+  if (!entries || entries.length === 0) {
+    entries = defaultEntries.map((e) => ({ ...e }));
+    // Computa o volume e salva
+    entries = entries.map((entry) => {
+      const vol = calculateVolume(entry.sets, entry.reps, entry.weight);
+      return { ...entry, volume: vol.toFixed(2) };
+    });
+    saveEntries(entries);
+  }
   renderEntriesTable(entries);
   renderSummary(entries);
 
